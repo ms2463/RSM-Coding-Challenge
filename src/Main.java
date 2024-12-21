@@ -1,39 +1,20 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-
 public class Main {
-    private static final Map<String, StreamingService> streamingServices = new HashMap<>();
-
     public static void main(String[] args) {
-        StreamingService notflix = new StreamingService("notflix", 5.99f);
-        StreamingService hulu = new StreamingService("hulu", 4.99f);
-        Film newfilm = new Film("The Shawshank Redemption", 1994, Genre.Drama, 4.759880f, 142);
-        notflix.addMedia(newfilm);
-        Film newfilm2 = new Film("Pulp Fiction", 1994, Genre.Action, 4.874219f, 154);
-        notflix.addMedia(newfilm2);
-        TVShow newShow = new TVShow("Friends", Genre.Comedy, 3.7f);
+        // example usage:
+        StreamingService netflix = new StreamingService("notflix", 5.99f);
+        StreamingService prime = new StreamingService("pwime", 4.99f);
+        Film shawshankRedemption = new Film("The Shawshank Redemption", 1994, Genre.Drama, 4.759880f, 142);
+        Film godfather = new Film("The Godfather", 1972, Genre.Drama, 3.296296f, 175);
+        TVShow friends = new TVShow("Friends", Genre.Comedy, 3.95f);
         Season season1 = new Season(1, 22, 2010);
-        notflix.addMedia(newShow, season1);
-        Season season2 = new Season(2, 20, 2011);
-        hulu.addMedia(newShow, season2);
-        Season season3 = new Season(3, 22, 2012);
-        hulu.addMedia(newShow, season3);
-        Season season4 = new Season(4, 20, 2013);
-        hulu.addMedia(newShow, season4);
-        notflix.listLibrary();
-        hulu.listLibrary();
-        hulu.removeMedia(newShow, season2);
-        notflix.removeMedia(newfilm2);
-        hulu.addMedia(newfilm2);
-        notflix.addMedia(newShow, season2);
-        hulu.listLibrary();
-        notflix.listLibrary();
-        StreamingService hbo = new StreamingService("HBO", 4.99f);
-        hbo.addMedia(newShow);
-        hbo.listLibrary();
-        hbo.removeMedia(newShow);
-        hbo.listLibrary();
-
+        Season season2 = new Season(2, 22, 2011);
+        netflix.addMedia(shawshankRedemption);
+        netflix.addMedia(godfather);
+        prime.addMedia(friends, season1);
+        netflix.addMedia(friends, season2);
+        prime.listLibrary();
+        netflix.listLibrary();
+        godfather.getInformation();
+        //feel free to add more examples and test the functionality as needed such as hosting constraints
     }
 }
